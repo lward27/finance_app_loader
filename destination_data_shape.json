@@ -1,0 +1,26 @@
+[
+    {
+      "price": 147.22985634667566,
+      "datetime": "2022-11-15T05:00:00",
+      "ticker_name": "A",
+      "price_type": "Open"
+    },
+    {
+      "price": 147.15040679776016,
+      "datetime": "2022-11-16T05:00:00",
+      "ticker_name": "A",
+      "price_type": "Open"
+    },
+    {
+      "price": 144.3104678102524,
+      "datetime": "2022-11-17T05:00:00",
+      "ticker_name": "A",
+      "price_type": "Open"
+    },
+    {
+      "price": 145.65099680327037,
+      "datetime": "2022-11-18T05:00:00",
+      "ticker_name": "A",
+      "price_type": "Open"
+    }
+]
