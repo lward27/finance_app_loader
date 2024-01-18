@@ -19,7 +19,7 @@ def main():
 
         # Process them with a small sleep interval between - handle yfinance issues...
         for ticker in tickers:
-            check_period = util.get_period(ticker)
+            check_period, latest_date = util.get_period(ticker)
             if check_period == None: #skip this one, it's borked!
                 print(f"{ticker} returns no period - probably not in yfinance system, skipping!")
                 continue
@@ -33,8 +33,7 @@ def main():
                     print(f"{ticker}: Not Found (but has been found before... hmm?)")
                     #TODO: delete ticker
                 else:
-                    transformed_payload = util.transform_payload(payload, ticker)
-                    #print(transformed_payload)
+                    transformed_payload = util.transform_payload(payload, ticker, latest_date)
                     message, status_code = util.save_batch_history(transformed_payload)
                     if status_code == 201:
                         print(f"{ticker}: successfully saved - period: {period}")
