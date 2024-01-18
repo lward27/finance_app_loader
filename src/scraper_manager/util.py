@@ -22,11 +22,11 @@ def get_period(ticker: str):
         print(f"Latest Date for {ticker}: {r.json()}")
         latest_date = datetime.fromisoformat(r.json())
         todays_date = datetime.now()
-        period = count_weekdays(latest_date, todays_date) #TODO: remove weekends...
+        period = count_weekdays(latest_date, todays_date)
         print(f"Period set to: {period}d")
         return (str(period) + 'd'), latest_date
     else:
-        return None
+        return None, None
 
 # Note - this count will still include holidays, in order to handle holidays, an additional date check
 # happens when transforming the payload.
@@ -50,11 +50,14 @@ def save_batch_history(batch_history):
     r = requests.post("https://database.financeapp.lucas.engineering/history/batch", data = batch_history)
     return r.json(), r.status_code
 
+#TODO: removing the timezone offset in the way that I did made the date comparison false... 
+# if the date is the same, removing the timezone offset makes it different....
+# for instance: 
 def transform_payload(payload: dict, ticker_name: str, latest_date) -> list:
     history_batch = []
+    latest_date = latest_date.replace(hour=0)
+
     for _date, _price in payload["Open"].items():
-        print(_date)
-        print(latest_date)
         if(datetime.fromisoformat((_date[:19])) > latest_date):
             new_history = {
                 "price_type": "Open",

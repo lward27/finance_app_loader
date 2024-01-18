@@ -20,6 +20,7 @@ def main():
         # Process them with a small sleep interval between - handle yfinance issues...
         for ticker in tickers:
             check_period, latest_date = util.get_period(ticker)
+            #TODO: handle TypeError: cannot unpack non-iterable NoneType object
             if check_period == None: #skip this one, it's borked!
                 print(f"{ticker} returns no period - probably not in yfinance system, skipping!")
                 continue
