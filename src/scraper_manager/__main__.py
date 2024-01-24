@@ -36,6 +36,7 @@ def main():
                 else:
                     transformed_payload = util.transform_payload(payload, ticker, latest_date)
                     message, status_code = util.save_batch_history(transformed_payload)
+                    status_code=201
                     if status_code == 201:
                         print(f"{ticker}: successfully saved - period: {period}")
                     else:
