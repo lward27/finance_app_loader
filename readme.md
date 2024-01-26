@@ -4,6 +4,7 @@ Run these commands to get started quickly.
 python3.10 -m venv venv  
 source venv/bin/activate  
 python3.10 -m pip install -r requirements.txt  
+a beep boop!
 
 # To build
 ```bash
